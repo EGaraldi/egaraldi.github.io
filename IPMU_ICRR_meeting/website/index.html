@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPMU Computational Forum</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for background, font, and vintage effect (MORE YELLOW) */
+        body {
+            font-family: 'Georgia', serif; /* Classic serif font for a vintage feel */
+            background-color: #f7f0d0; /* Increased yellow tint (Parchment) */
+            color: #333; /* Dark, ink-like text color */
+        }
+        .header-bg {
+            background-color: #7c5c00; /* Deep Gold/Mustard Brown */
+        }
+        .accent-color {
+            color: #a0522d; /* Sienna/Burnt Ochre as the primary accent */
+        }
+        .card {
+            /* Old-style, definite border and pronounced shadow, no transition/hover effect */
+            border: 2px solid #967b60; /* Sepia brown border */
+            box-shadow: 6px 6px 0px #967b60; /* Heavy, offset shadow for depth */
+        }
+        .header-title {
+            font-family: 'Times New Roman', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        /* Style for the table to enforce vintage border look */
+        .vintage-table th, .vintage-table td {
+            border: 1px solid #967b60; /* Use the new sepia border color */
+        }
+
+        /* Adjust Tailwind classes to fit the new yellow/sepia palette */
+        .bg-amber-100 { background-color: #fff8e1; } /* Lighter tone for table header */
+        .bg-amber-50 { background-color: #fffbe6; } /* Even lighter for list items */
+        .border-amber-200 { border-color: #e6c89c; } /* Muted yellow border */
+
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header Section -->
+    <header class="header-bg text-white py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="4xl sm:text-5xl font-extrabold mb-2 tracking-tight header-title">
+                IPMU + ICRR meeting
+            </h1>
+            <p class="text-xl sm:text-2xl font-light opacity-90">
+                A space to discuss high-z galaxies and IGM. 
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
+
+        <section id="introduction" class="mb-12 p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center">A regular forum for IPMU and ICRR researchers to ask questions, discuss ideas, present papers, etc. The main focus is (z>3) galaxies and the intergalactic medium, but everyone is welcome.</h2>
+        </section>
+
+        <!-- Meeting Concept -->
+        <!-- <section id="details" class="mb-12 bg-white p-6 sm:p-8 rounded-lg card">
+            <div class="text-center space-y-4 text-lg sm:text-xl">
+                <p>
+                    A space to regularly meet and ask questions, discuss ideas, present papers, etc. concerning high-redshift galaxies and the intergalactic medium (IGM).
+                </p>
+            </div>
+            
+            <div class="mt-8 flex justify-center">
+                <button onclick="toggleModal('registerModal', true)" class="bg-[#a0522d] hover:bg-[#7c5c00] text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-colors border-2 border-[#7c5c00]">
+                    Join the Mailing List
+                </button>
+            </div>
+        </section> -->
+
+        <!-- Meeting Details Section (Plain Text) -->
+        <section id="details" class="mb-12 bg-white p-6 sm:p-8 rounded-lg card">
+            <h2 class="text-3xl font-bold mb-6 accent-color text-center">Meeting essentials</h2>
+            <div class="text-center space-y-4 text-lg sm:text-xl">
+                <p>
+                    <strong class="accent-color">Dates:</strong>
+                    Every 4 weeks, see below for upcoming schedule
+                </p>
+                <p>
+                    <strong class="accent-color">Time:</strong>
+                    1pm - 2pm
+                </p>
+                <p>
+                    <strong class="accent-color">Location:</strong>
+                    Alternating between IPMU (seminar room C, 3rd floor) and ICRR (TBD)
+                </p>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-gLRY3IlyHjRGG2FL8UwKI_UF5wJsrJc7giAJxBlRq_q-cw/viewform?usp=dialog" target="_blank" class="inline-block bg-[#a0522d] hover:bg-[#7c5c00] text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all active:scale-95 border-2 border-[#7c5c00]">
+                    Join the Mailing List
+                </a>
+            </div>
+        </section>
+
+        <!-- UPCOMING Speaker Schedule Section (Table) -->
+        <section id="upcoming-schedule" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Upcoming Speaker Schedule</h2>
+
+            <div class="bg-white rounded-lg card p-2 overflow-x-auto">
+                <table class="min-w-full vintage-table border-collapse">
+                    <thead class="bg-amber-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-sm font-extrabold uppercase tracking-wider accent-color border">Date</th>
+                            <th class="px-4 py-3 text-left text-sm font-extrabold uppercase tracking-wider accent-color border">Speaker(s)</th>
+                            <th class="px-4 py-3 text-left text-sm font-extrabold uppercase tracking-wider accent-color border">Topic(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="upcoming-schedule-body" class="divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="3" class="px-4 py-4 text-center text-gray-500 border">
+                                Loading and sorting schedule data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- PAST Speaker Schedule Section (Table) -->
+        <section id="past-schedule" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Past Speakers and Topics</h2>
+
+            <div class="bg-white rounded-lg card p-2 overflow-x-auto">
+                <table class="min-w-full vintage-table border-collapse">
+                    <thead class="bg-amber-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-sm font-extrabold uppercase tracking-wider accent-color border">Date</th>
+                            <th class="px-4 py-3 text-left text-sm font-extrabold uppercase tracking-wider accent-color border">Speaker(s)</th>
+                            <th class="px-4 py-3 text-left text-sm font-extrabold uppercase tracking-wider accent-color border">Topic(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="past-schedule-body" class="divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="3" class="px-4 py-4 text-center text-gray-500 border">
+                                Loading and sorting schedule data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Organizers Contact Section (Simplified List, Static Text) -->
+        <section id="contact" class="text-center bg-white p-8 rounded-lg card">
+            <h2 class="text-3xl font-bold mb-6 accent-color text-center">Current organizers</h2>
+            
+            <!-- Email addresses are now non-interactive text -->
+            <ul class="space-y-4 text-lg max-w-lg mx-auto">
+                <li class="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                    <strong class="accent-color">Enrico Garaldi</strong>
+                    <span class="text-gray-900 block mt-1">egaraldi [at] ipmu.jp</span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 mt-12 text-sm text-gray-700 border-t border-gray-400">
+        &copy; 2026 Enrico Garaldi. All rights reserved.
+    </footer>
+
+    <!-- JavaScript for Data Loading, Parsing, and Dynamic Table Generation -->
+    <script>
+        // The path to the external plain text data file
+        const SCHEDULE_DATA_PATH = 'schedule.txt';
+
+        /**
+         * Parses a single line of text into a structured speaker object.
+         * Assumes format: "Date|Speaker|Topic: Summary"
+         * @param {string} line - A single line from the text file, separated by '|'.
+         * @returns {Object|null} Structured speaker object or null if invalid.
+         */
+        function parseLine(line) {
+            // Trim whitespace and check if the line is empty
+            line = line.trim();
+            if (!line) return null;
+
+            // --- CRITICAL CHANGE: Split by pipe (|) instead of comma (,)
+            const parts = line.split('|');
+            if (parts.length < 3) return null;
+
+            const dateStr = parts[0].trim();
+            const speaker = parts[1].trim();
+            //const topicFull = parts.slice(2).join('|').trim(); // Use slice(2) to safely join the rest of the line
+            const topic = parts.slice(2).join('|').trim(); // Use slice(2) to safely join the rest of the line
+
+            //// Split the topic and summary by the first colon, if present
+            //let topic = topicFull;
+            //let summary = '';
+
+            //const topicParts = topicFull.split(':');
+            //if (topicParts.length > 1) {
+            //    topic = topicParts[0].trim();
+            //    summary = topicParts.slice(1).join(':').trim(); // Rejoin case of multiple colons
+            //}
+
+            // Create a Date object for comparison
+            const meetingDate = new Date(dateStr);
+            if (isNaN(meetingDate)) {
+                 console.error(`Invalid date format encountered: ${dateStr}`);
+                 return null;
+            }
+
+            return {
+                date: dateStr,
+                speaker: speaker,
+                topic: topic,
+                //summary: summary,
+                meetingDate: meetingDate // Keep the Date object for sorting
+            };
+        }
+
+        /**
+         * Renders the schedule data into a specified table.
+         */
+        function renderSchedule(speakerData, targetId) {
+            const tableBody = document.getElementById(targetId);
+            
+            if (!tableBody) return;
+
+            if (!speakerData || speakerData.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="3" class="px-4 py-4 text-center text-gray-600 border">No data found for this section.</td></tr>`;
+                return;
+            }
+
+            // Generate HTML rows for each data object
+            const rowsHTML = speakerData.map(data => `
+                <tr>
+                    <td class="px-4 py-4 whitespace-nowrap font-medium text-gray-900 border">${data.date}</td>
+                    <td class="px-4 py-4 whitespace-nowrap text-gray-700 border">${data.speaker}</td>
+                    <td class="px-4 py-4 text-gray-600 border">
+                        <strong class="accent-color">${data.topic}</strong>${data.summary ? `: ${data.summary}` : ''}
+                    </td>
+                </tr>
+            `).join('');
+
+            tableBody.innerHTML = rowsHTML;
+        }
+
+        /**
+         * Fetches plain text data, parses it, sorts it into past/future, and renders the tables.
+         */
+        async function fetchAndRenderSchedule() {
+            const upcomingBody = document.getElementById('upcoming-schedule-body');
+            const pastBody = document.getElementById('past-schedule-body');
+            
+            try {
+                // Fetch the external plain text file
+                const response = await fetch(SCHEDULE_DATA_PATH);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}. Ensure '${SCHEDULE_DATA_PATH}' is in the same directory and your local server is running.`);
+                }
+
+                const text = await response.text();
+                const lines = text.split('\n');
+
+                const allMeetings = [];
+                for (const line of lines) {
+                    const meeting = parseLine(line);
+                    if (meeting) {
+                        allMeetings.push(meeting);
+                    }
+                }
+
+                // Get today's date at midnight for an accurate comparison
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const upcomingSpeakers = [];
+                const pastSpeakers = [];
+
+                // Sort meetings into past and future
+                allMeetings.forEach(meeting => {
+                    // Compare the meeting date object with today's date object
+                    if (meeting.meetingDate >= today) {
+                        upcomingSpeakers.push(meeting);
+                    } else {
+                        pastSpeakers.push(meeting);
+                    }
+                });
+
+                // Sort upcoming speakers chronologically (earliest first)
+                upcomingSpeakers.sort((a, b) => a.meetingDate - b.meetingDate);
+
+                // Sort past speakers reverse-chronologically (most recent first)
+                pastSpeakers.sort((a, b) => b.meetingDate - a.meetingDate);
+                
+                // Render the sorted data
+                renderSchedule(upcomingSpeakers, 'upcoming-schedule-body');
+                renderSchedule(pastSpeakers, 'past-schedule-body');
+
+            } catch (error) {
+                console.error("Failed to load/parse schedule data:", error);
+                const errorMessage = `
+                    <tr>
+                        <td colspan="3" class="px-4 py-4 text-center text-red-600 border">
+                            Error loading schedule: ${error.message}. Please check console and file path.
+                        </td>
+                    </tr>
+                `;
+                if (upcomingBody) upcomingBody.innerHTML = errorMessage;
+                if (pastBody) pastBody.innerHTML = errorMessage;
+            }
+        }
+
+        // 3. EXECUTION
+        document.addEventListener('DOMContentLoaded', fetchAndRenderSchedule);
+    </script>
+</body>
+</html>
+
